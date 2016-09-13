@@ -10,6 +10,8 @@ import UIKit
 
 class PageCell: UICollectionViewCell {
     
+    var page: Page?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -25,9 +27,21 @@ class PageCell: UICollectionViewCell {
         return imageView
     }()
     
+    let guideTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "SAMPLE TEXT FOR NOW"
+        textView.editable = false
+        
+        return textView
+    }()
+    
     func setupViews() {
         addSubview(guideImageView)
-        guideImageView.anchorToTop(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+        addSubview(guideTextView)
+        
+        guideImageView.anchorToTop(topAnchor, left: leftAnchor, bottom: guideTextView.topAnchor, right: rightAnchor)
+        guideTextView.anchorToTop(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+        guideTextView.heightAnchor.constraintEqualToAnchor(heightAnchor, multiplier: 0.3).active = true
     }
     
     required init?(coder aDecoder: NSCoder) {
