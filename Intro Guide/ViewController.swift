@@ -31,7 +31,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         view.addSubview(guideCollectionView)
         
         guideCollectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-        guideCollectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        guideCollectionView.registerClass(PageCell.self, forCellWithReuseIdentifier: cellId)
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -40,8 +40,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
-        
-        cell.backgroundColor = UIColor.whiteColor()
         
         return cell
     }
