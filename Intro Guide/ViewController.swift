@@ -15,7 +15,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         layout.scrollDirection = .Horizontal
         layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.redColor()
+        collectionView.backgroundColor = UIColor.whiteColor()
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.pagingEnabled = true
