@@ -8,21 +8,46 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    let guideCollectionView: UICollectionView = {
+    lazy var guideCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .Horizontal
+        layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.redColor()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.pagingEnabled = true
         
         return collectionView
     }()
+    
+    let cellId = "cellId"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(guideCollectionView)
         
+        guideCollectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        guideCollectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath)
+        
+        cell.backgroundColor = UIColor.whiteColor()
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
     }
 }
 
