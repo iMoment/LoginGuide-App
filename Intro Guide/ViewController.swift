@@ -34,11 +34,45 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         return [firstPage, secondPage, thirdPage]
     }()
+    
+    let guidePageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1)
+        pageControl.numberOfPages = 3
+        
+        return pageControl
+    }()
+    
+    let skipButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Skip", for: .normal)
+        button.setTitleColor(UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1), for: .normal)
+        
+        return button
+    }()
+    
+    let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Next", for: .normal)
+        button.setTitleColor(UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1), for: .normal)
+        
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.addSubview(guideCollectionView)
+        view.addSubview(guidePageControl)
+        view.addSubview(skipButton)
+        view.addSubview(nextButton)
+        
+        _ = guidePageControl.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)
+        
+        _ = skipButton.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
+        
+        _ = nextButton.anchor(view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
         
         guideCollectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         guideCollectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
