@@ -19,12 +19,12 @@ class PageCell: UICollectionViewCell {
             
             let color = UIColor(white: 0.2, alpha: 1)
             
-            let attributedText = NSMutableAttributedString(string: page.title, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(20, weight: UIFontWeightMedium), NSForegroundColorAttributeName: color])
+            let attributedText = NSMutableAttributedString(string: page.title, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium), NSForegroundColorAttributeName: color])
             
-            attributedText.appendAttributedString(NSAttributedString(string: "\n\n\(page.message)", attributes: [NSFontAttributeName: UIFont.systemFontOfSize(14), NSForegroundColorAttributeName: color]))
+            attributedText.append(NSAttributedString(string: "\n\n\(page.message)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: color]))
             
             let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .Center
+            paragraphStyle.alignment = .center
             
             let length = attributedText.string.characters.count
             attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: length))
@@ -42,7 +42,7 @@ class PageCell: UICollectionViewCell {
     let guideImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "page1")
-        imageView.contentMode = .ScaleAspectFill
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
         return imageView
@@ -51,7 +51,7 @@ class PageCell: UICollectionViewCell {
     let guideTextView: UITextView = {
         let textView = UITextView()
         textView.text = "SAMPLE TEXT FOR NOW"
-        textView.editable = false
+        textView.isEditable = false
         textView.contentInset = UIEdgeInsets(top: 24, left: 0, bottom: 0, right: 0)
         
         return textView
@@ -73,11 +73,11 @@ class PageCell: UICollectionViewCell {
         
         guideTextView.anchorWithConstantsToTop(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 16, bottomConstant: 0, rightConstant: 16)
         
-        guideTextView.heightAnchor.constraintEqualToAnchor(heightAnchor, multiplier: 0.3).active = true
+        guideTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
         
         lineSeparatorView.anchorToTop(nil, left: leftAnchor, bottom: guideTextView.topAnchor, right: rightAnchor)
         
-        lineSeparatorView.heightAnchor.constraintEqualToConstant(1).active = true
+        lineSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {

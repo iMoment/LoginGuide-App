@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		914BC6FC1D8834F5004A1F68 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914BC6FB1D8834F5004A1F68 /* Page.swift */; };
+		9162F4841D8EF9EC00DC30C4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9162F4831D8EF9EC00DC30C4 /* Extensions.swift */; };
 		91E207901D87DF48001BD699 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E2078F1D87DF48001BD699 /* AppDelegate.swift */; };
 		91E207921D87DF48001BD699 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E207911D87DF48001BD699 /* ViewController.swift */; };
 		91E207951D87DF49001BD699 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91E207931D87DF49001BD699 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		914BC6FB1D8834F5004A1F68 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		9162F4831D8EF9EC00DC30C4 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		91E2078C1D87DF48001BD699 /* Intro Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Intro Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E2078F1D87DF48001BD699 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91E207911D87DF48001BD699 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				91E2079B1D87DF49001BD699 /* Info.plist */,
 				91E207A11D87EA44001BD699 /* PageCell.swift */,
 				914BC6FB1D8834F5004A1F68 /* Page.swift */,
+				9162F4831D8EF9EC00DC30C4 /* Extensions.swift */,
 			);
 			path = "Intro Guide";
 			sourceTree = "<group>";
@@ -97,12 +100,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Stanley Pan";
 				TargetAttributes = {
 					91E2078B1D87DF48001BD699 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = P48JT8XFF3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -142,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9162F4841D8EF9EC00DC30C4 /* Extensions.swift in Sources */,
 				91E207921D87DF48001BD699 /* ViewController.swift in Sources */,
 				91E207901D87DF48001BD699 /* AppDelegate.swift in Sources */,
 				914BC6FC1D8834F5004A1F68 /* Page.swift in Sources */,
@@ -185,8 +190,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -231,8 +238,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -251,6 +260,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -267,6 +277,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.iMoment.Intro-Guide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -281,6 +292,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.github.iMoment.Intro-Guide";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

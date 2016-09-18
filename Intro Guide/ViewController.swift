@@ -12,13 +12,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     lazy var guideCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
+        layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.backgroundColor = UIColor.white
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.pagingEnabled = true
+        collectionView.isPagingEnabled = true
         
         return collectionView
     }()
@@ -41,52 +41,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         view.addSubview(guideCollectionView)
         
         guideCollectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-        guideCollectionView.registerClass(PageCell.self, forCellWithReuseIdentifier: cellId)
+        guideCollectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pages.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! PageCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
         
-        let page = pages[indexPath.item]
+        let page = pages[(indexPath as NSIndexPath).item]
         cell.page = page
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
-    }
-}
-
-extension UIView {
-    
-    func anchorToTop(top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil) {
-        
-        anchorWithConstantsToTop(top, left: left, bottom: bottom, right: right, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0)
-    }
-    
-    func anchorWithConstantsToTop(top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0) {
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        if let top = top {
-            topAnchor.constraintEqualToAnchor(top, constant: topConstant).active = true
-        }
-        
-        if let bottom = bottom {
-            bottomAnchor.constraintEqualToAnchor(bottom, constant: -bottomConstant).active = true
-        }
-        
-        if let left = left {
-            leftAnchor.constraintEqualToAnchor(left, constant: leftConstant).active = true
-        }
-        
-        if let right = right {
-            rightAnchor.constraintEqualToAnchor(right, constant: -rightConstant).active = true
-        }
     }
 }
