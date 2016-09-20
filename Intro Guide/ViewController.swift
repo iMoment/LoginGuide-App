@@ -61,6 +61,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return button
     }()
 
+    var guidePageControlBottomAnchor: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,7 +71,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         view.addSubview(skipButton)
         view.addSubview(nextButton)
         
-        _ = guidePageControl.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)
+        guidePageControlBottomAnchor = guidePageControl.anchor(nil, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)[1]
         
         _ = skipButton.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
         
@@ -78,6 +80,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         guideCollectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         
         registerCells()
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        let pageNumber = Int(targetContentOffset.pointee.x / view.frame.width)
+        guidePageControl.currentPage = pageNumber
+        
+        if pageNumber == pages.count {
+            guidePageControlBottomAnchor?.constant = 40
+        } else {
+            guidePageControlBottomAnchor?.constant = 0
+        }
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            // needed for every change in constant constraint inside an animation
+            self.view.layoutIfNeeded()
+            
+        }, completion: nil)
     }
     
     fileprivate func registerCells() {
