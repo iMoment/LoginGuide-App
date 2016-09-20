@@ -24,6 +24,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }()
     
     let cellId = "cellId"
+    let loginCellId = "loginCellId"
     
     let pages: [Page] = {
         let firstPage = Page(title: "Share a great listen", message: "It's free to send your books to the people in your life. Every recipient's first book is on us.", imageName: "page1")
@@ -35,11 +36,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return [firstPage, secondPage, thirdPage]
     }()
     
-    let guidePageControl: UIPageControl = {
+    lazy var guidePageControl: UIPageControl = {
         let pageControl = UIPageControl()
         pageControl.pageIndicatorTintColor = .lightGray
         pageControl.currentPageIndicatorTintColor = UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1)
-        pageControl.numberOfPages = 3
+        pageControl.numberOfPages = self.pages.count + 1
         
         return pageControl
     }()
@@ -75,14 +76,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         _ = nextButton.anchor(view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 16, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 50)
         
         guideCollectionView.anchorToTop(view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        
+        registerCells()
+    }
+    
+    fileprivate func registerCells() {
         guideCollectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
+        guideCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: loginCellId)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pages.count
+        return pages.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.item == pages.count {
+            let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath)
+            return loginCell
+        }
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
         
         let page = pages[(indexPath as NSIndexPath).item]
