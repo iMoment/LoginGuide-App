@@ -107,7 +107,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     fileprivate func registerCells() {
         guideCollectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
-        guideCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: loginCellId)
+        guideCollectionView.register(LoginCell.self, forCellWithReuseIdentifier: loginCellId)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
