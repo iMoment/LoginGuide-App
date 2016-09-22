@@ -17,8 +17,8 @@ class LoginCell: UICollectionViewCell {
         return imageView
     }()
     
-    let emailTextField: UITextField = {
-        let textField = UITextField()
+    let emailTextField: LeftPaddedTextField = {
+        let textField = LeftPaddedTextField()
         textField.placeholder = "Enter email"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 1
@@ -27,8 +27,8 @@ class LoginCell: UICollectionViewCell {
         return textField
     }()
     
-    let passwordTextField: UITextField = {
-        let textField = UITextField()
+    let passwordTextField: LeftPaddedTextField = {
+        let textField = LeftPaddedTextField()
         textField.placeholder = "Enter password"
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.layer.borderWidth = 1
@@ -54,7 +54,7 @@ class LoginCell: UICollectionViewCell {
         addSubview(passwordTextField)
         addSubview(loginButton)
         
-        _ = logoImageView.anchor(centerYAnchor, left: nil, bottom: nil, right: nil, topConstant: -200, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 160, heightConstant: 160)
+        _ = logoImageView.anchor(centerYAnchor, left: nil, bottom: nil, right: nil, topConstant: -230, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 160, heightConstant: 160)
         logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         _ = emailTextField.anchor(logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 8, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
@@ -68,6 +68,29 @@ class LoginCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+class LeftPaddedTextField: UITextField {
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: bounds.origin.x + 10, y: bounds.origin.y, width: bounds.width + 10, height: bounds.height)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: bounds.origin.x + 10, y: bounds.origin.y, width: bounds.width + 10, height: bounds.height)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
