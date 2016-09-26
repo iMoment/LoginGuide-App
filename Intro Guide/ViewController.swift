@@ -67,6 +67,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if guidePageControl.currentPage == pages.count {
             return
         }
+        
+        if guidePageControl.currentPage == pages.count - 1 {
+            moveControlConstraintsOffScreen()
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                // needed for every change in constant constraint inside an animation
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+        
         let indexPath = IndexPath(item: guidePageControl.currentPage + 1, section: 0)
         guideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         guidePageControl.currentPage += 1
@@ -128,9 +138,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         guidePageControl.currentPage = pageNumber
         
         if pageNumber == pages.count {
-            guidePageControlBottomAnchor?.constant = 40
-            skipButtonTopAnchor?.constant = -40
-            nextButtonTopAnchor?.constant = -40
+            moveControlConstraintsOffScreen()
         } else {
             guidePageControlBottomAnchor?.constant = 0
             skipButtonTopAnchor?.constant = 16
@@ -141,6 +149,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             self.view.layoutIfNeeded()
             
         }, completion: nil)
+    }
+    
+    fileprivate func moveControlConstraintsOffScreen() {
+        guidePageControlBottomAnchor?.constant = 40
+        skipButtonTopAnchor?.constant = -40
+        nextButtonTopAnchor?.constant = -40
     }
     
     fileprivate func registerCells() {
