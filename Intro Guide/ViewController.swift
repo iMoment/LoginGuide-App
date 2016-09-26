@@ -53,13 +53,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return button
     }()
     
-    let nextButton: UIButton = {
+    lazy var nextButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Next", for: .normal)
         button.setTitleColor(UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1), for: .normal)
+        button.addTarget(self, action: #selector(nextPage), for: .touchUpInside)
         
         return button
     }()
+    
+    func nextPage() {
+        
+        if guidePageControl.currentPage == pages.count {
+            return
+        }
+        let indexPath = IndexPath(item: guidePageControl.currentPage + 1, section: 0)
+        guideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        guidePageControl.currentPage += 1
+    }
 
     var guidePageControlBottomAnchor: NSLayoutConstraint?
     var skipButtonTopAnchor: NSLayoutConstraint?
