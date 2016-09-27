@@ -129,7 +129,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func keyboardShow() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { 
         
-            self.view.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height)
+            let yValue: CGFloat = UIDevice.current.orientation.isLandscape ? -100 : -50
+            self.view.frame = CGRect(x: 0, y: yValue, width: self.view.frame.width, height: self.view.frame.height)
             
         }, completion: nil)
     }
@@ -198,6 +199,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let indexPath = IndexPath(item: guidePageControl.currentPage, section: 0)
         DispatchQueue.main.async {
             self.guideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.guideCollectionView.reloadData()
         }
         
     }

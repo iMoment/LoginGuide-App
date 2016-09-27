@@ -15,7 +15,13 @@ class PageCell: UICollectionViewCell {
             guard let page = page else {
                 return
             }
-            guideImageView.image = UIImage(named: page.imageName)
+            
+            var imageName = page.imageName
+            if UIDevice.current.orientation.isLandscape {
+                imageName += "_landscape"
+            }
+            
+            guideImageView.image = UIImage(named: imageName)
             
             let color = UIColor(white: 0.2, alpha: 1)
             
