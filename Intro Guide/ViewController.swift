@@ -190,4 +190,28 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
     }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        guideCollectionView.collectionViewLayout.invalidateLayout()
+        
+        let indexPath = IndexPath(item: guidePageControl.currentPage, section: 0)
+        DispatchQueue.main.async {
+            self.guideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
+        
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
