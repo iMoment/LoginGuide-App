@@ -47,10 +47,10 @@ class LoginCell: UICollectionViewCell {
         return button
     }()
     
-    var loginController: LoginController?
+    weak var delegate: LoginControllerDelegate?
     
     func handleLogin() {
-        loginController?.finishLoggingIn()
+        delegate?.finishLoggingIn()
     }
     
     override init(frame: CGRect) {
