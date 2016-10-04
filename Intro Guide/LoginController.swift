@@ -175,8 +175,10 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        // Rendering last login cell here
         if indexPath.item == pages.count {
-            let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath)
+            let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as! LoginCell
+            loginCell.loginController = self
             return loginCell
         }
         
@@ -186,6 +188,10 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
         cell.page = page
         
         return cell
+    }
+    
+    func finishLoggingIn() {
+        dismiss(animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
