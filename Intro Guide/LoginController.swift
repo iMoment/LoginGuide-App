@@ -202,6 +202,9 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
         }
         mainNavigationController.viewControllers = [HomeController()]
         
+        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+        UserDefaults.standard.synchronize()
+        
         dismiss(animated: true, completion: nil)
     }
     
