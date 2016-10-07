@@ -17,6 +17,7 @@
 		91E2079A1D87DF49001BD699 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91E207981D87DF49001BD699 /* LaunchScreen.storyboard */; };
 		91E207A21D87EA44001BD699 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E207A11D87EA44001BD699 /* PageCell.swift */; };
 		91E82D271DA73DBF00616108 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E82D261DA73DBF00616108 /* HomeController.swift */; };
+		91E82D291DA73F8200616108 /* UserDefaults+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E82D281DA73F8200616108 /* UserDefaults+helpers.swift */; };
 		91F3C9CE1D945A5100B16CAC /* LoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3C9CD1D945A5100B16CAC /* LoginCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		91E2079B1D87DF49001BD699 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91E207A11D87EA44001BD699 /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		91E82D261DA73DBF00616108 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		91E82D281DA73F8200616108 /* UserDefaults+helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+helpers.swift"; sourceTree = "<group>"; };
 		91F3C9CD1D945A5100B16CAC /* LoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +100,7 @@
 				913101BF1D993D3F00A494FE /* Controller */,
 				91E2078F1D87DF48001BD699 /* AppDelegate.swift */,
 				9162F4831D8EF9EC00DC30C4 /* Extensions.swift */,
+				91E82D281DA73F8200616108 /* UserDefaults+helpers.swift */,
 				91E207931D87DF49001BD699 /* Main.storyboard */,
 				91E207961D87DF49001BD699 /* Assets.xcassets */,
 				91E207981D87DF49001BD699 /* LaunchScreen.storyboard */,
@@ -187,6 +190,7 @@
 				91B6E02C1D9DFAFD0081C6DE /* MainNavigationController.swift in Sources */,
 				91E207A21D87EA44001BD699 /* PageCell.swift in Sources */,
 				91F3C9CE1D945A5100B16CAC /* LoginCell.swift in Sources */,
+				91E82D291DA73F8200616108 /* UserDefaults+helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
